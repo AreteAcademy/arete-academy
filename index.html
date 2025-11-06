@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aretê Academy — Disciplina. Propósito. Excelência.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-content">
+      <h1 class="logo">Aretê Academy</h1>
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#filosofia">Filosofia</a>
+        <a href="#conteudo">Conteúdo</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <h2>Busque a Excelência.<br />Viva com Propósito.</h2>
+      <p>Aprendizado, disciplina e sabedoria prática inspirados na filosofia estoica.</p>
+      <a href="https://youtube.com/@areteacademy" target="_blank" class="cta-button">
+        Visite o Canal no YouTube
+      </a>
+    </div>
+  </section>
+
+  <!-- Filosofia -->
+  <section id="filosofia" class="section">
+    <div class="section-content">
+      <div class="decorative-line"></div>
+      <h3>Sobre</h3>
+      <p>
+        A Aretê Academy nasceu para inspirar mentes a viverem com virtude, propósito e excelência.
+        Acreditamos que a verdadeira educação une o domínio técnico à sabedoria moral.
+      </p>
+      <p>
+        Através da filosofia estoica e dos ensinamentos clássicos, buscamos cultivar não apenas
+        conhecimento, mas caráter — formando indivíduos que compreendem que a excelência é um
+        caminho, não um destino.
+      </p>
+    </div>
+  </section>
+
+  <!-- Conteúdo -->
+  <section id="conteudo" class="section">
+    <div class="section-content">
+      <h3>Conteúdo</h3>
+      <div class="content-grid">
+        <div class="card">
+          <h4>Estoicismo e Alta Performance</h4>
+          <p>Como os princípios estoicos podem transformar sua produtividade e clareza mental no mundo moderno.</p>
+          <a href="https://youtube.com/@areteacademy" target="_blank">Assistir no YouTube →</a>
+        </div>
+        <div class="card">
+          <h4>Disciplina na Era Digital</h4>
+          <p>Cultivando foco e autodomínio em meio às distrações constantes da tecnologia.</p>
+          <a href="https://youtube.com/@areteacademy" target="_blank">Assistir no YouTube →</a>
+        </div>
+        <div class="card">
+          <h4>Excelência no Código e na Vida</h4>
+          <p>A busca pela aretê: unindo excelência técnica com virtude moral e propósito.</p>
+          <a href="https://youtube.com/@areteacademy" target="_blank">Assistir no YouTube →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <div class="quote-content">
+      <blockquote>
+        “A felicidade da tua vida depende da qualidade dos teus pensamentos.”
+      </blockquote>
+      <p class="quote-author">— Marco Aurélio</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contato">
+    <div class="footer-content">
+      <p>Aretê Academy — Disciplina. Propósito. Excelência.</p>
+      <div class="footer-links">
+        <a href="https://youtube.com/@areteacademy" target="_blank">YouTube</a>
+        <span>•</span>
+        <a href="mailto:contato@areteacademy.com">Contato</a>
+        <span>•</span>
+        <a href="#">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll suave
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Header translucido ao scroll
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
