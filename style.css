@@ -104,6 +104,27 @@ a {
   grid-template-columns: 1fr;
 }
 
+.hero-grid-single .hero-copy {
+  width: 100%;
+  text-align: center;
+}
+
+.hero-grid-single h1 {
+  max-width: none;
+  width: 100%;
+  text-wrap: balance;
+}
+
+.hero-grid-single .hero-text {
+  max-width: 72ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-grid-single .hero-actions {
+  justify-content: center;
+}
+
 .hero-home {
   min-height: calc(100vh - 82px);
   display: flex;
@@ -153,7 +174,7 @@ a {
 
 .hero h1 {
   font-size: clamp(3.2rem, 8vw, 6rem);
-  max-width: 10ch;
+  /* max-width: 10ch; */
 }
 
 .hero-panel h2,
