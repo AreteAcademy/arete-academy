@@ -11,6 +11,10 @@
      ouro       #D9B77A   9.72:1
      bronze     #AA8450   5.41:1   (o mesmo bronze do site anterior)
    Pior caso, em --surface-2 (#221E18): secundario 7.11, bronze 4.84.
+
+   As cores do brevis.sh, só na seção dele (a marca e o .sh do wordmark):
+     lima       #C7D66D  11.72:1
+     oliva      #7D8E50   5.17:1   (4.62 em --surface-2)
    --line (#3D3427) é filete, nunca texto nem contorno de controle.
    =========================================================================== */
 
@@ -25,6 +29,9 @@
   --text-dim: #b3a993;
   --gold: #d9b77a;
   --bronze: #aa8450;
+
+  --brevis-lime: #c7d66d;
+  --brevis-olive: #7d8e50;
 
   --line: #3d3427;
   --line-soft: #29241c;
@@ -587,6 +594,86 @@ blockquote {
   margin-top: 1rem;
 }
 
+/* ------------------------------------------------------------- brevis ---- */
+
+/* O projeto que saiu daqui. A marca e o .sh vêm nas cores do brevis.sh, e só
+   eles: o resto do painel fala a língua da Aretê. */
+.brevis-panel {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background-color: var(--surface);
+}
+
+.brevis-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.brevis-wordmark .mark {
+  width: 1.05em;
+  height: 1.05em;
+  flex: none;
+  align-self: center;
+  color: var(--brevis-lime);
+}
+
+.brevis-wordmark .tld {
+  color: var(--brevis-olive);
+}
+
+.brevis-tagline {
+  margin-top: 0.75rem;
+  color: var(--text-dim);
+}
+
+.brevis-pieces {
+  list-style: none;
+  margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.brevis-piece {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--bg);
+}
+
+.brevis-piece h3 {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.brevis-piece p {
+  flex: 1;
+  font-size: 0.93rem;
+  color: var(--text-dim);
+}
+
+.brevis-piece .pill {
+  align-self: flex-start;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.brevis-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.5rem;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
 /* ------------------------------------------------------------- footer ---- */
 
 .site-footer {
@@ -685,6 +772,10 @@ blockquote {
     padding: 0 0.5rem 0.5rem;
   }
 
+  .brevis-pieces {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -729,8 +820,13 @@ blockquote {
   }
 
   .hero-actions .button,
-  .course-actions .button {
+  .course-actions .button,
+  .brevis-links .button {
     flex: 1 1 100%;
+  }
+
+  .brevis-pieces {
+    grid-template-columns: 1fr;
   }
 
   .footer-grid {

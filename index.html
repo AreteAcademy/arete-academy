@@ -26,6 +26,10 @@
       <!-- O circunflexo do ê de Aretê. Mesmo traço em assets/favicon.svg. -->
       <path d="M5 15.2 12 8.8l7 6.4" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="i-brevis" viewBox="0 0 24 24" fill="none">
+      <!-- A breve do brevis.sh, igual a site/assets/mark.svg de lá. -->
+      <path d="M4 10.4C4 15.2 20 15.2 20 10.4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
     <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
       <path d="M4 7h16M4 12h16M4 17h16"/>
     </symbol>
@@ -74,6 +78,62 @@
             <a class="button button-secondary" href="https://brevis.sh/" target="_blank" rel="noopener">
               Conhecer o brevis.sh ↗
             </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- As descrições das quatro peças são as do i18n.json do brevis.sh
+         (eco_core, eco_sdk, eco_gateway, eco_sql): se mudarem lá, mudam aqui. -->
+    <section class="section section-brevis" id="brevis" aria-labelledby="brevis-h">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">do pensamento ao código</p>
+            <h2 id="brevis-h">O brevis.sh nasceu aqui.</h2>
+          </div>
+          <p class="section-aside">
+            O nome vem de Sêneca, <em>De Brevitate Vitae</em>: não é que temos pouco tempo, é
+            que perdemos muito dele. A pergunta que guia o projeto é a mesma desta escola:
+            quais complexidades realmente merecem o tempo de uma equipe? A resposta virou
+            infraestrutura de dados open source, em Go, que roda no seu cluster.
+          </p>
+        </div>
+
+        <div class="brevis-panel bg-grid">
+          <a class="brevis-wordmark" href="https://brevis.sh/" target="_blank" rel="noopener">
+            <svg class="mark" aria-hidden="true"><use href="#i-brevis"></use></svg>
+            <span>brevis<span class="tld">.sh</span></span>
+          </a>
+          <p class="brevis-tagline">Do dado bruto à tabela modelada. Em Go.</p>
+
+          <ul class="brevis-pieces">
+          <li class="card brevis-piece">
+            <h3>Core</h3>
+            <p>Agenda, enfileira e sobe um pod por etapa. Nunca toca o dado.</p>
+            <span class="pill">areteacademy/brevis</span>
+          </li>
+          <li class="card brevis-piece">
+            <h3>SDK</h3>
+            <p>Biblioteca Go que extrai, molda e carrega, dentro da sua etapa.</p>
+            <span class="pill">brevis/sdk</span>
+          </li>
+          <li class="card brevis-piece">
+            <h3>Gateway</h3>
+            <p>Recebe HTTP POST, responde 202 e grava em lote. Sem banco próprio.</p>
+            <span class="pill">areteacademy/brevis-gateway</span>
+          </li>
+          <li class="card brevis-piece">
+            <h3>SQL</h3>
+            <p>Arquivos .sql viram tabelas e views, em ordem de dependência.</p>
+            <span class="pill">areteacademy/brevis-sql</span>
+          </li>
+          </ul>
+
+          <div class="brevis-links">
+            <a class="button button-primary" href="https://brevis.sh/" target="_blank" rel="noopener">Conhecer o brevis.sh ↗</a>
+            <a class="button button-secondary" href="https://brevis.sh/docs/philosophy/" target="_blank" rel="noopener">A filosofia do projeto ↗</a>
+            <a class="text-link" href="https://github.com/AreteAcademy/brevis" target="_blank" rel="noopener">Código no GitHub ↗</a>
           </div>
         </div>
       </div>
