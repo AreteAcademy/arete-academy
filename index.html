@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="style.css" />
@@ -92,8 +92,11 @@
     <div class="shell header-bar">
       <a class="brand" href="index.html">
         <svg class="mark" aria-hidden="true"><use href="#i-mark"></use></svg>
-        <span class="brand-name">Aretê</span><span class="brand-sub">academy</span>
+        <span class="brand-name">Aretê</span> <span class="brand-sub">academy</span>
       </a>
+      <button class="nav-toggle" type="button" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <svg aria-hidden="true"><use href="#i-menu"></use></svg>
+      </button>
       <nav class="main-nav" id="nav" aria-label="Principal">
         <a href="index.html" aria-current="page">Home</a>
         <a href="platao.html">Platão</a>
@@ -103,9 +106,6 @@
           YouTube
         </a>
       </nav>
-      <button class="nav-toggle" type="button" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
-        <svg aria-hidden="true"><use href="#i-menu"></use></svg>
-      </button>
     </div>
   </header>
 
@@ -250,7 +250,7 @@
         <div class="footer-brand">
           <a class="brand" href="index.html">
             <svg class="mark" aria-hidden="true"><use href="#i-mark"></use></svg>
-        <span class="brand-name">Aretê</span><span class="brand-sub">academy</span>
+        <span class="brand-name">Aretê</span> <span class="brand-sub">academy</span>
           </a>
           <p>Engenharia de dados e filosofia: disciplina, propósito e excelência.</p>
         </div>

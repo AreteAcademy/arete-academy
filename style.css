@@ -554,7 +554,7 @@ blockquote {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2;
 }
 
@@ -565,7 +565,7 @@ blockquote {
   color: var(--bronze);
 }
 
-/* A capa é retrato (852x972): a coluna dela tem teto, e a altura sai da
+/* A capa é retrato (800x912): a coluna dela tem teto, e a altura sai da
    proporção declarada no <img>, não da altura do texto ao lado. */
 .featured-course {
   display: grid;
