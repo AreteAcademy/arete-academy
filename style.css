@@ -1,399 +1,619 @@
+/* ===========================================================================
+   Aretê Academy
+
+   Mesma família do brevis.sh (o projeto aberto que nasceu aqui): fundo
+   escuro, quadriculado, IBM Plex, cantos quase retos. A voz é da Aretê:
+   o bronze no lugar do lima e a Cormorant só em display (h1, citação).
+
+   Contraste sobre o fundo #15130F, medido:
+     texto      #EFE9DC  15.34:1
+     secundario #B3A993   7.96:1
+     ouro       #D9B77A   9.72:1
+     bronze     #AA8450   5.41:1   (o mesmo bronze do site anterior)
+   Pior caso, em --surface-2 (#221E18): secundario 7.11, bronze 4.84.
+   --line (#3D3427) é filete, nunca texto nem contorno de controle.
+   =========================================================================== */
+
 :root {
-  --bg: #f4efe4;
-  --bg-soft: #fbf8f1;
-  --surface: rgba(255, 252, 245, 0.84);
-  --surface-strong: #fffdf8;
-  --text: #21180f;
-  --muted: #6e6254;
-  --line: rgba(33, 24, 15, 0.1);
-  --gold: #aa8450;
-  --gold-strong: #8a693d;
-  --shadow: 0 20px 60px rgba(33, 24, 15, 0.08);
-  --radius-lg: 28px;
-  --radius-md: 20px;
-  --radius-sm: 14px;
+  color-scheme: dark;
+
+  --bg: #15130f;
+  --surface: #1c1914;
+  --surface-2: #221e18;
+
+  --text: #efe9dc;
+  --text-dim: #b3a993;
+  --gold: #d9b77a;
+  --bronze: #aa8450;
+
+  --line: #3d3427;
+  --line-soft: #29241c;
+
+  --gold-wash: rgba(217, 183, 122, 0.08);
+  --gold-edge: rgba(217, 183, 122, 0.28);
+  --grid-line: rgba(217, 183, 122, 0.045);
+  --grid-size: 48px;
+
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --shell: 1280px;
+  --gap: clamp(1.5rem, 3vw, 2.5rem);
+
+  --r: 3px;
+  --r-lg: 4px;
+  --r-xl: 6px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  background: var(--bg);
   color: var(--text);
-  background:
-    radial-gradient(circle at top, rgba(170, 132, 80, 0.12), transparent 34%),
-    linear-gradient(180deg, #f8f2e8 0%, var(--bg) 44%, #f8f4ed 100%);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
-img {
+img,
+svg {
   display: block;
   max-width: 100%;
 }
 
+::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
 a {
   color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
 }
 
 .shell {
-  width: min(1120px, calc(100% - 2rem));
-  margin: 0 auto;
+  width: min(var(--shell), calc(100% - 2.5rem));
+  margin-inline: auto;
 }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* --------------------------------------------------------- tipografia ---- */
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* O h1 é o único lugar, com a citação, onde a Cormorant fala. */
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 6.2vw, 5.25rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.25;
+}
+
+/* Rótulo em forma de comentário. O `//` vem do CSS para que leitor de tela
+   não anuncie "barra barra" antes de cada seção. */
+.eyebrow,
+.section-kicker,
+.panel-label,
+.card-tag {
+  display: block;
+  margin: 0 0 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--bronze);
+}
+
+.eyebrow::before,
+.section-kicker::before,
+.panel-label::before,
+.card-tag::before {
+  content: "// ";
+  color: var(--line);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--gold);
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.text-link:hover {
+  border-bottom-color: currentColor;
+}
+
+/* ------------------------------------------------------------ botoes ---- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  font-size: 0.94rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.button-primary {
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.button-primary:hover {
+  background: #e3c793;
+}
+
+.button-secondary {
+  color: var(--text);
+  border-color: var(--bronze);
+}
+
+.button-secondary:hover {
+  border-color: var(--gold);
+  background: var(--gold-wash);
+  color: var(--gold);
+}
+
+.button-sm {
+  padding: 0.55rem 1rem;
+  font-size: 0.86rem;
+}
+
+.button svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.hero-actions,
+.course-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2.5rem;
+}
+
+/* -------------------------------------------------------- componentes ---- */
+
+.bg-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+.card,
+.pillar,
+.roadmap-card {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  padding: clamp(1.25rem, 2.4vw, 1.75rem);
+}
+
+/* ------------------------------------------------------------ header ---- */
 
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 20;
-  backdrop-filter: blur(16px);
-  background: rgba(248, 242, 232, 0.82);
-  border-bottom: 1px solid var(--line);
+  z-index: 40;
+  background: rgba(21, 19, 15, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+/* Um filete de luz sob o header, mais forte no centro. */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-edge) 50%, transparent);
+  pointer-events: none;
 }
 
 .header-bar {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1rem 0;
+  gap: 1.25rem;
+  padding: 0.9rem 0;
 }
 
 .brand {
-  text-decoration: none;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  color: var(--text);
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--bronze);
 }
 
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
+  gap: 1.75rem;
+  margin-left: auto;
 }
 
-.main-nav a {
-  text-decoration: none;
-  color: var(--muted);
-  font-size: 0.96rem;
+.main-nav a:not(.button) {
+  font-size: 0.9rem;
+  color: var(--text-dim);
   transition: color 0.2s ease;
 }
 
-.main-nav a:hover,
+.main-nav a:not(.button):hover,
 .main-nav a[aria-current="page"] {
-  color: var(--text);
+  color: var(--gold);
 }
 
+.nav-ext {
+  font-family: var(--font-mono);
+}
+
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  color: var(--gold);
+  border-color: var(--bronze);
+}
+
+.nav-toggle svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* --------------------------------------------------------------- hero ---- */
+
 .hero {
-  padding: 5.5rem 0 3rem;
+  padding: clamp(3rem, 7vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
-  gap: 2rem;
+  gap: var(--gap);
   align-items: stretch;
 }
 
 .hero-grid-single {
   grid-template-columns: 1fr;
-}
-
-.hero-grid-single .hero-copy {
-  width: 100%;
   text-align: center;
 }
 
-.hero-grid-single h1 {
-  max-width: none;
-  width: 100%;
-  text-wrap: balance;
-}
-
 .hero-grid-single .hero-text {
-  max-width: 72ch;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
 }
 
 .hero-grid-single .hero-actions {
   justify-content: center;
 }
 
-.hero-home {
-  min-height: calc(100vh - 82px);
-  display: flex;
-  align-items: center;
-}
-
-.hero-copy,
-.hero-panel,
-.featured-course,
-.philosopher-card,
-.pillar,
-.roadmap-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-}
-
-.hero-copy {
-  padding: clamp(2rem, 5vw, 4.5rem);
-  background: linear-gradient(145deg, rgba(255, 251, 243, 0.9), rgba(250, 243, 228, 0.72));
-}
-
-.eyebrow,
-.section-kicker,
-.panel-label,
-.card-tag {
-  margin: 0 0 0.9rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-strong);
-}
-
-.hero h1,
-.hero-panel h2,
-.section h2,
-.section h3,
-.philosopher-card h3,
-.pillar h3,
-.roadmap-card h3 {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  line-height: 0.95;
-  font-weight: 600;
-}
-
-.hero h1 {
-  font-size: clamp(3.2rem, 8vw, 6rem);
-  /* max-width: 10ch; */
-}
-
-.hero-panel h2,
-.section h2 {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-}
-
-.hero-text,
-.hero-panel p,
-.section p,
-.philosopher-card p,
-.pillar p,
-.roadmap-card p,
-.course-content p {
-  color: var(--muted);
-  line-height: 1.75;
-}
-
 .hero-text {
-  max-width: 58ch;
-  margin: 1.5rem 0 0;
-  font-size: 1.05rem;
-}
-
-.hero-actions,
-.course-actions,
-.footer-links {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.hero-actions,
-.course-actions {
-  margin-top: 2rem;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.95rem 1.4rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  text-decoration: none;
-  font-weight: 600;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-.button:hover {
-  transform: translateY(-1px);
-}
-
-.button-primary {
-  background: var(--text);
-  color: #fff7eb;
-}
-
-.button-secondary {
-  background: transparent;
-  color: var(--text);
-  border-color: var(--line);
+  max-width: 60ch;
+  margin-top: 1.75rem;
+  font-size: clamp(1.02rem, 1.35vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--text-dim);
 }
 
 .hero-panel {
-  padding: 2rem;
-  background: rgba(33, 24, 15, 0.93);
-  color: #f8efdf;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background-color: var(--surface);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1rem;
 }
 
-.hero-panel p,
-.hero-panel .panel-label,
-.hero-panel .text-link,
-.hero-panel small {
-  color: rgba(248, 239, 223, 0.78);
+.hero-panel h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
 }
 
-.text-link {
-  display: inline-flex;
-  margin-top: 1.5rem;
-  text-decoration: none;
-  color: var(--gold-strong);
-  font-weight: 600;
+.hero-panel p:not(.panel-label) {
+  color: var(--text-dim);
 }
+
+/* ------------------------------------------------------------- secoes ---- */
 
 .section {
-  padding: 2rem 0 4rem;
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  border-top: 1px solid var(--line-soft);
 }
 
 .section-soft {
-  background: rgba(255, 252, 245, 0.42);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.section p:not([class]),
+.section-aside,
+.pillar p:not(.pillar-number),
+.roadmap-card p:not(.section-kicker),
+.course-content p:not(.card-tag) {
+  color: var(--text-dim);
 }
 
 .intro-block {
-  text-align: center;
   max-width: 760px;
+  text-align: center;
 }
 
 .intro-block p:last-child {
-  margin: 1rem auto 0;
+  margin-top: 1.25rem;
 }
 
 .section-heading,
 .page-intro {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.9fr);
-  gap: 2rem;
+  gap: var(--gap);
   align-items: end;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
-.section-aside {
-  margin: 0;
-}
-
-.philosopher-grid,
 .pillars,
 .roadmap {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.philosopher-card,
-.pillar,
-.roadmap-card {
-  padding: 2rem;
-  background: var(--surface);
-}
-
-.philosopher-card-active {
-  background: linear-gradient(145deg, rgba(255, 251, 243, 0.96), rgba(242, 229, 205, 0.78));
+  gap: 1.25rem;
 }
 
 .pillars {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.pillar h3,
+.roadmap-card h3 {
+  margin-bottom: 0.85rem;
+}
+
+.roadmap-card p + p {
+  margin-top: 1rem;
+}
+
 .pillar-number {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: var(--gold-strong);
-  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--bronze);
 }
 
 .quote-band {
-  padding: 3rem 0 4.5rem;
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  border-top: 1px solid var(--line-soft);
 }
 
 .quote-wrap {
-  padding: 2.5rem;
-  border-top: 1px solid var(--line);
   text-align: center;
 }
 
 blockquote {
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--text);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .quote-wrap p {
-  margin: 1rem 0 0;
-  color: var(--muted);
-}
-
-.hero-philosopher .hero-copy {
-  background: linear-gradient(145deg, rgba(252, 248, 239, 0.95), rgba(243, 232, 210, 0.72));
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--bronze);
 }
 
 .featured-course {
   display: grid;
   grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.1fr);
-  gap: 2rem;
-  padding: 1.2rem;
-  background: var(--surface-strong);
+  gap: var(--gap);
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--bg);
 }
 
 .course-cover img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 22px;
+  border-radius: var(--r-lg);
   border: 1px solid var(--line);
 }
 
 .course-content {
-  padding: 1.25rem 1rem 1.25rem 0;
+  padding: 1rem 1rem 1rem 0;
 }
 
 .course-content h3 {
-  margin: 0 0 1rem;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 1rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
 }
+
+.course-content p + p {
+  margin-top: 1rem;
+}
+
+/* ------------------------------------------------------------- footer ---- */
 
 .site-footer {
-  padding: 1.5rem 0 3rem;
+  position: relative;
+  border-top: 1px solid var(--line);
+  padding: clamp(3rem, 6vw, 4.5rem) 0 2.5rem;
+  background-color: var(--surface);
 }
 
-.footer-bar {
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
+/* O quadriculado some para baixo, sob um véu: os títulos das colunas são
+   bronze, e bronze sobre um filete do quadriculado cheio perde contraste. */
+.site-footer.bg-grid {
+  background-image:
+    linear-gradient(180deg, rgba(28, 25, 20, 0.55), var(--surface) 75%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: auto, var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size);
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-edge) 50%, transparent);
+  pointer-events: none;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.footer-brand p {
+  margin-top: 1.25rem;
+  max-width: 32ch;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.footer-col h2 {
+  margin-bottom: 1.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--bronze);
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.footer-col a {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--bronze);
 }
 
-.site-footer p,
-.footer-links a {
-  color: var(--muted);
-  text-decoration: none;
-}
+/* ---------------------------------------------------------- responsivo ---- */
 
 @media (max-width: 960px) {
   .hero-grid,
@@ -401,7 +621,6 @@ blockquote {
   .page-intro,
   .featured-course,
   .pillars,
-  .philosopher-grid,
   .roadmap {
     grid-template-columns: 1fr;
   }
@@ -409,40 +628,68 @@ blockquote {
   .course-content {
     padding: 0 0.5rem 0.5rem;
   }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 720px) {
-  .header-bar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .brand {
-    font-size: 1.7rem;
-  }
-
   .main-nav {
-    gap: 0.8rem 1rem;
-  }
-
-  .hero {
-    padding-top: 3.5rem;
-  }
-
-  .hero h1 {
-    max-width: none;
-  }
-
-  .hero-copy,
-  .hero-panel,
-  .philosopher-card,
-  .pillar,
-  .roadmap-card,
-  .featured-course {
-    border-radius: 22px;
-  }
-
-  .footer-bar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0.5rem 0 1.5rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .main-nav.is-open {
+    display: flex;
+  }
+
+  .main-nav a:not(.button) {
+    padding: 0.85rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .main-nav .button {
+    margin-top: 1rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .hero-actions .button,
+  .course-actions .button {
+    flex: 1 1 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
   }
 }

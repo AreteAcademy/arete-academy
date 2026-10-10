@@ -11,25 +11,44 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+    </symbol>
+  </svg>
+
   <header class="site-header" id="topo">
     <div class="shell header-bar">
-      <a class="brand" href="index.html">Aretê Academy</a>
-      <nav class="main-nav" aria-label="Principal">
+      <a class="brand" href="index.html">
+        <span class="brand-name">Aretê</span><span class="brand-sub">academy</span>
+      </a>
+      <nav class="main-nav" id="nav" aria-label="Principal">
         <a href="index.html" aria-current="page">Home</a>
         <a href="platao.html">Platão</a>
-        <!-- <a href="#filosofos">Filósofos</a> -->
-        <!-- <a href="#contato">Contato</a> -->
+        <a class="nav-ext" href="https://brevis.sh/" target="_blank" rel="noopener">brevis.sh ↗</a>
+        <a class="button button-secondary button-sm" href="https://www.youtube.com/@AreteDevAcademy" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-youtube"></use></svg>
+          YouTube
+        </a>
       </nav>
+      <button class="nav-toggle" type="button" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <svg aria-hidden="true"><use href="#i-menu"></use></svg>
+      </button>
     </div>
   </header>
 
-  <main>
+  <main id="conteudo">
     <section class="hero hero-home">
       <div class="shell hero-grid hero-grid-single">
         <div class="hero-copy">
@@ -91,16 +110,43 @@
     </section>
   </main>
 
-  <footer class="site-footer" id="contato">
-    <div class="shell footer-bar">
-      <p>Aretê Academy | Disciplina, propósito e excelência.</p>
-      <div class="footer-links">
-        <a href="platao.html">Platão</a>
-        <a href="https://www.youtube.com/@AreteDevAcademy" target="_blank" rel="noreferrer">YouTube</a>
-        <a href="https://github.com/AreteAcademy" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="mailto:areteacademy.dev@gmail.com">Contato</a>
+  <footer class="site-footer bg-grid" id="contato">
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-name">Aretê</span><span class="brand-sub">academy</span>
+          </a>
+          <p>Engenharia de dados e filosofia: disciplina, propósito e excelência.</p>
+        </div>
+
+        <div class="footer-col">
+          <h2>Aretê</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="platao.html">Platão</a></li>
+            <li><a href="https://www.youtube.com/@AreteDevAcademy" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="mailto:areteacademy.dev@gmail.com">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Projetos</h2>
+          <ul>
+            <li><a href="https://brevis.sh/" target="_blank" rel="noopener">brevis.sh</a></li>
+            <li><a href="https://brevis.sh/docs/" target="_blank" rel="noopener">Documentação do brevis.sh</a></li>
+            <li><a href="https://github.com/AreteAcademy" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Aretê Academy</p>
+        <p>O código é aberto: github.com/AreteAcademy</p>
       </div>
     </div>
   </footer>
+
+  <script src="main.js" defer></script>
 </body>
 </html>
