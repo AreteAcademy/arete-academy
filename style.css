@@ -384,6 +384,49 @@ h3 {
   text-align: center;
 }
 
+.hero-home {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(4rem, 9vw, 7.5rem);
+}
+
+/* O quadriculado se apaga nas bordas: textura atrás do título, não moldura.
+   Fica num pseudo-elemento para que a máscara não apague o texto. */
+.hero-home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  -webkit-mask-image: radial-gradient(ellipse 80% 90% at 50% 40%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 90% at 50% 40%, #000 55%, transparent 100%);
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-badge {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.75rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
 .hero-grid-single .hero-text {
   margin-inline: auto;
 }
@@ -398,6 +441,11 @@ h3 {
   font-size: clamp(1.02rem, 1.35vw, 1.15rem);
   line-height: 1.75;
   color: var(--text-dim);
+}
+
+/* Um link no meio da frase é texto: inline-flex abriria a linha. */
+.hero-text .text-link {
+  display: inline;
 }
 
 .hero-panel {
