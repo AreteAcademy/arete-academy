@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://areteacademy.com.br/sitemap.xml
