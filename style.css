@@ -451,7 +451,8 @@ h3 {
 }
 
 /* Um link no meio da frase é texto: inline-flex abriria a linha. */
-.hero-text .text-link {
+.hero-text .text-link,
+.pillar .text-link {
   display: inline;
 }
 
@@ -544,6 +545,7 @@ h3 {
 }
 
 .quote-wrap {
+  margin-block: 0;
   text-align: center;
 }
 
@@ -556,7 +558,7 @@ blockquote {
   line-height: 1.2;
 }
 
-.quote-wrap p {
+.quote-wrap figcaption {
   margin-top: 1.25rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
