@@ -298,6 +298,14 @@ h3 {
   color: var(--text);
 }
 
+.brand .mark {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  align-self: center;
+  color: var(--gold);
+}
+
 .brand-name {
   font-family: var(--font-serif);
   font-size: 1.6rem;

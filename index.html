@@ -15,11 +15,17 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#15130f">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-mark" viewBox="0 0 24 24" fill="none">
+      <!-- O circunflexo do ê de Aretê. Mesmo traço em assets/favicon.svg. -->
+      <path d="M5 15.2 12 8.8l7 6.4" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
     <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
       <path d="M4 7h16M4 12h16M4 17h16"/>
     </symbol>
@@ -31,6 +37,7 @@
   <header class="site-header" id="topo">
     <div class="shell header-bar">
       <a class="brand" href="index.html">
+        <svg class="mark" aria-hidden="true"><use href="#i-mark"></use></svg>
         <span class="brand-name">Aretê</span><span class="brand-sub">academy</span>
       </a>
       <nav class="main-nav" id="nav" aria-label="Principal">
@@ -115,7 +122,8 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="brand" href="index.html">
-            <span class="brand-name">Aretê</span><span class="brand-sub">academy</span>
+            <svg class="mark" aria-hidden="true"><use href="#i-mark"></use></svg>
+        <span class="brand-name">Aretê</span><span class="brand-sub">academy</span>
           </a>
           <p>Engenharia de dados e filosofia: disciplina, propósito e excelência.</p>
         </div>

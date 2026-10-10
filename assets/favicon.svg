@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!-- O circunflexo do ê de Aretê, irmão da breve do brevis.sh: mesmo traço,
+       mesmas pontas redondas. Fundo sólido porque a aba é clara em alguns
+       sistemas e escura em outros. -->
+  <rect width="24" height="24" rx="5" fill="#15130f"/>
+  <path d="M5 15.2 12 8.8l7 6.4" stroke="#d9b77a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
