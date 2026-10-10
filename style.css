@@ -565,9 +565,12 @@ blockquote {
   color: var(--bronze);
 }
 
+/* A capa é retrato (852x972): a coluna dela tem teto, e a altura sai da
+   proporção declarada no <img>, não da altura do texto ao lado. */
 .featured-course {
   display: grid;
-  grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(240px, 400px) minmax(0, 1fr);
+  align-items: center;
   gap: var(--gap);
   padding: 1rem;
   border: 1px solid var(--line);
@@ -577,8 +580,7 @@ blockquote {
 
 .course-cover img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   border-radius: var(--r-lg);
   border: 1px solid var(--line);
 }
@@ -772,6 +774,10 @@ blockquote {
 
   .course-content {
     padding: 0 0.5rem 0.5rem;
+  }
+
+  .course-cover {
+    max-width: 400px;
   }
 
   .brevis-pieces {
